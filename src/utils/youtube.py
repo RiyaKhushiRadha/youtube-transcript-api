@@ -1,4 +1,8 @@
+import re
+
 from urllib.parse import urlparse, parse_qs
+
+from src.exceptions.youtube import InvalidYouTubeURLException
 
 
 def extract_video_id(video_input: str) -> str:
@@ -28,4 +32,9 @@ def extract_video_id(video_input: str) -> str:
         if "v" in query_params:
             return query_params["v"][0]
 
-    return video_input
+    if re.fullmatch(r"[A-Za-z0-9_-]{11}", video_input):
+        return video_input
+
+    raise InvalidYouTubeURLException(
+        "Invalid YouTube URL or Video ID."
+            )
