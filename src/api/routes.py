@@ -1,5 +1,8 @@
 from fastapi import APIRouter
 
+from src.schemas.youtube import VideoRequest, VideoResponse
+from src.utils.youtube import extract_video_id
+
 router = APIRouter()
 
 
@@ -15,3 +18,12 @@ def health_check():
     return {
         "status": "healthy"
     }
+
+@router.post(
+    "/parse",
+    response_model=VideoResponse,
+)
+def parse_video(request: VideoRequest):
+    video_id = extract_video_id(request.video_url)
+
+    return VideoResponse(video_id=video_id)
