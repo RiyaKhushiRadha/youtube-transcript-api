@@ -1,6 +1,10 @@
 from fastapi import APIRouter
 
-from src.schemas.youtube import VideoRequest, VideoResponse
+from src.schemas.youtube import (
+    TranscriptResponse,
+    VideoRequest,
+    VideoResponse,
+)
 from src.utils.youtube import extract_video_id
 from src.services.transcript import TranscriptService
 
@@ -29,7 +33,10 @@ def parse_video(request: VideoRequest):
 
     return VideoResponse(video_id=video_id)
 
-@router.post("/transcript")
+@router.post(
+    "/transcript",
+    response_model=TranscriptResponse,
+)
 def get_transcript(request: VideoRequest):
     video_id = extract_video_id(request.video_url)
 
