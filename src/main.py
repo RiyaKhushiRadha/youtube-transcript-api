@@ -10,10 +10,49 @@ from src.exceptions.youtube import (
 
 from src.api.routes import router
 
+tags_metadata = [
+    {
+        "name": "General",
+        "description": "General API information and health monitoring endpoints.",
+    },
+    {
+        "name": "YouTube",
+        "description": "Operations related to YouTube URL parsing and video information.",
+    },
+    {
+        "name": "Transcript",
+        "description": "Operations for fetching YouTube video transcripts.",
+    },
+]
+
 app = FastAPI(
-    title="YouTube Transcript Service",
-    description="A FastAPI service to extract YouTube video transcripts.",
-    version="0.1.0",
+    title="YouTube Transcript API",
+    description="""
+A production-ready REST API built with FastAPI for extracting transcripts from YouTube videos.
+
+## Features
+
+- Extract transcripts from YouTube videos
+- Supports manually created and auto-generated subtitles
+- RESTful API
+- Interactive Swagger Documentation
+- Comprehensive error handling
+- Automated testing with Pytest
+- Cloud deployment on Render
+
+This project was built as a backend engineering portfolio project following professional software development practices.
+""",
+    version="1.0.0",
+    openapi_tags=tags_metadata,
+    contact={
+        "name": "Riya",
+        "url": "https://github.com/RiyaKhushiRadha",
+    },
+    license_info={
+        "name": "MIT License",
+    },
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
 @app.exception_handler(TranscriptNotAvailableException)

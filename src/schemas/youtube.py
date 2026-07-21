@@ -1,31 +1,60 @@
 from typing import List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class VideoRequest(BaseModel):
-    """
-    Request model for a YouTube video.
-    """
-
-    video_url: str
+    video_url: str = Field(
+        ...,
+        description="A valid YouTube video URL.",
+        examples=[
+            "https://youtu.be/dQw4w9WgXcQ"
+        ],
+    )
 
 
 class VideoResponse(BaseModel):
-    """
-    Response model containing the extracted video ID.
-    """
-
-    video_id: str
+    video_id: str = Field(
+        ...,
+        description="Extracted YouTube Video ID.",
+        examples=[
+            "dQw4w9WgXcQ"
+        ],
+    )
 
 class TranscriptSnippet(BaseModel):
-    text: str
-    start: float
-    duration: float
+    text: str = Field(
+        ...,
+        description="Transcript text.",
+    )
+
+    start: float = Field(
+        ...,
+        description="Start time in seconds.",
+    )
+
+    duration: float = Field(
+        ...,
+        description="Duration in seconds.",
+    )
 
 class TranscriptResponse(BaseModel):
-    video_id: str
-    language: str
-    language_code: str
-    is_generated: bool
-    transcript: List[TranscriptSnippet]
+    video_id: str = Field(
+        ...,
+        description="YouTube Video ID.",
+    )
+
+    language: str = Field(
+        ...,
+        description="Transcript language.",
+    )
+
+    language_code: str = Field(
+        ...,
+        description="Language code.",
+    )
+
+    is_generated: bool = Field(
+        ...,
+        description="Whether the transcript was automatically generated.",
+    )
