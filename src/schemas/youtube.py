@@ -58,3 +58,8 @@ class TranscriptResponse(BaseModel):
         ...,
         description="Whether the transcript was automatically generated.",
     )
+
+    transcript: List[TranscriptSnippet] = Field(
+        ...,
+        description="List of transcript segments.",
+    )
