@@ -217,25 +217,6 @@ youtube-transcript-api/
 
 ---
 
-# 🚀 Future Improvements
-
-Planned enhancements include:
-
-- 🎬 Support for uploaded video files
-- 🎵 Audio file transcription
-- 🌍 Automatic language translation
-- 📝 AI-powered transcript summarization
-- 📚 Key points extraction
-- 🧠 Mind map generation
-- 📊 PDF and DOCX export
-- 📽️ PowerPoint generation
-- 🤖 LLM integration (Gemini / OpenAI)
-- 🔑 Authentication & API Keys
-- ⚡ Rate limiting
-- 📈 Usage analytics
-
----
-
 # 📜 License
 
 This project is licensed under the MIT License.
